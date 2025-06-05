@@ -1,13 +1,13 @@
 import streamlit as st
 
-# Page setup
-st.set_page_config(page_title="Maya Bot - Motivation & Nurture", page_icon="💜", layout="centered")
+# Page configuration
+st.set_page_config(page_title="Maya Bot - The Game Changer", page_icon="💜", layout="centered")
 
-# Branding
+# Branding and Header
 st.image("Upgraded logo 3-13-24 black letters sports on road.png", width=200)
 st.markdown("### *When It’s Quiet, Stay Ready.*")
 
-# Button style
+# Custom button styling
 st.markdown("""
 <style>
 div.stButton > button:first-child {
@@ -21,66 +21,56 @@ div.stButton > button:first-child {
 </style>
 """, unsafe_allow_html=True)
 
-# Title
+# Title and Overview
 st.title("💜 Maya Bot: The Game Changer")
 st.subheader("Motivation & Nurture Specialist")
+
 st.markdown("**Style of Play:** Impactful, strategic, leadership-focused")
 
 st.markdown("""
-Maya keeps you engaged when the process gets quiet. 
-She checks in with you, sends messages that lift your mindset, and reminds you why you started.
+Maya keeps you engaged during the quiet moments of the recruiting process.  
+She delivers motivational check-ins, reflections, and reminders to help you stay mentally strong.
 
-> "When the process feels quiet, Maya reminds you why you started—and how to stay ready."
+> “When the process feels quiet, Maya reminds you why you started—and how to stay ready.”
 """)
 
-# Step 1: How Are You Feeling?
+# Step 1: Emotional Check-In
 st.header("Step 1: Emotional Check-In")
-feeling = st.selectbox("How are you feeling about recruiting right now?", [
-    "Frustrated",
-    "Unmotivated",
-    "Overwhelmed",
-    "Hopeful",
-    "Focused",
-    "Discouraged"
+mood = st.selectbox("How are you feeling right now?", [
+    "Frustrated", "Unmotivated", "Overwhelmed", "Hopeful", "Focused", "Discouraged"
 ])
 
-# Step 2: Message or Resource
+# Step 2: Maya’s Motivational Message
 st.header("Step 2: Maya’s Message to You")
-if feeling == "Frustrated":
-    st.warning("You’re closer than you think. Sometimes silence means they're watching.")
-elif feeling == "Unmotivated":
-    st.info("Remember why you started. Your discipline will outlast your mood.")
-elif feeling == "Overwhelmed":
-    st.info("Take one step today. You don’t need to have it all figured out.")
-elif feeling == "Hopeful":
-    st.success("Hope is fuel. Let’s channel that into action.")
-elif feeling == "Focused":
-    st.success("Locked in. Stay ready so you don’t have to get ready.")
-elif feeling == "Discouraged":
-    st.warning("Discouragement means you care. That’s your edge. Keep going.")
+if mood == "Frustrated":
+    st.warning("You’re closer than you think. Silence often means you’re being watched.")
+elif mood == "Unmotivated":
+    st.info("Discipline outlasts motivation. Stick with your plan.")
+elif mood == "Overwhelmed":
+    st.info("Take one step at a time. Progress is progress.")
+elif mood == "Hopeful":
+    st.success("That hope is your fuel. Keep moving forward.")
+elif mood == "Focused":
+    st.success("Stay sharp. Consistency compounds results.")
+elif mood == "Discouraged":
+    st.warning("If it were easy, everyone would do it. You’re built different.")
 
-# Step 3: Daily Affirmation
-st.header("Step 3: Daily Affirmation")
-st.markdown("""
-> *"I will not let silence define my story. I am seen. I am preparing. I am enough."*
-""")
+# Step 3: Reflection Journal
+st.header("Step 3: Journal Entry")
+journal = st.text_area("What are you thinking right now? Reflect, reset, and reframe.")
 
-# Step 4: Optional Journal Entry
-st.header("Step 4: Reflection Journal")
-journal = st.text_area("Write a few thoughts. What are you proud of today? What will you do next?")
+# Step 4: Delivery Preference
+st.header("Step 4: Delivery Method")
+contact_method = st.selectbox("Where should Maya send future check-ins?", ["Email", "SMS", "Just in this App"])
+contact_info = st.text_input(f"Enter your {contact_method}:")
 
-# Step 5: Delivery Method
-st.header("Step 5: Stay Connected")
-delivery = st.selectbox("Where should Maya check in with you?", ["Email", "SMS", "Just in this app"])
-contact = st.text_input(f"Enter your {delivery}:")
-
-# Summary
-if st.button("Save and Reset"):
-    st.success("📝 Entry Saved")
+# Step 5: Submission Summary
+if st.button("Save Check-In"):
+    st.success("✅ Check-In Submitted")
     st.markdown(f"""
-    **Mood:** {feeling}  
-    **Delivery Preference:** {delivery} → {contact}  
-    **Reflection:** {journal if journal else 'No notes today'}
+    **Mood:** {mood}  
+    **Reflection:** {journal if journal else 'No journal entry provided'}  
+    **Delivery:** {contact_method} → {contact_info}
     """)
-    st.info("Maya says: Keep going. Coaches notice what others overlook.")
+    st.info("Maya says: Stay ready. You’re not alone in this process.")
     st.balloons()
